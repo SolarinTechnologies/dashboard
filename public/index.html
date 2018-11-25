@@ -1,0 +1,57 @@
+<html>
+	<head>
+	    <title>Solarin Technologies LLC</title>
+	    <script src="javascripts/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="javascripts/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="javascripts/index.js" type="text/javascript" charset="utf-8"></script>
+	    <link href="stylesheets/style.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="header_region">
+			<div class="logo_region">
+				<img src="solarin_technologies_logo.png" alt="solarin_technologies_logo" style="height: 70px; margin: 0;">
+			</div >
+		</div >
+		<div class="data_region">
+			<div class="chart_region">
+	    		<canvas id="myChart" width="400" height="187"></canvas>
+			</div>
+			<div class="chart_region">
+	    		<div class="doughnut_region"><canvas id="doughnut-chart" width="400" height="187"></canvas></div>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="chart_region">
+				<div class="text_region">Controls</div>
+				<div class="slider_region">
+					<div class="text_region">Carbon Monoxide</div>
+					<div class="slide_div">
+						<input id="carbon_slider" type="range" orient="vertical" />
+					</div>
+					<p id="carbon_slider_output" >0</p>
+				</div>
+				<div class="slider_region">
+					<div class="text_region">Temperature</div>
+					<div class="slide_div">
+						<input id="temperature_slider" type="range" orient="vertical" />
+					</div>
+					<p id="temperature_slider_output" >0</p>
+				</div>
+				<div class="slider_region">
+					<div class="text_region">Humidity</div>
+					<div class="slide_div">
+						<input id="humidity_slider" type="range" orient="vertical" />
+					</div>
+					<p id="humidity_slider_output" >0</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			var slider = document.getElementById("temperature_slider");
+			var output = document.getElementById("temperature_slider_output");
+			output.innerHTML = slider.value;
+			slider.oninput = function() {
+			  output.innerHTML = this.value;
+			}
+		</script>
+	</body>
+</html>
