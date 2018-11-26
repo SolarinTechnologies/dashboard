@@ -77,8 +77,8 @@ $(document).ready(function () {
     }
   });
 
-  // var ws = new WebSocket('ws://stwebapp30.azurewebsites.net');
-  var ws = new WebSocket('ws://localhost:3000');
+  var ws = new WebSocket('ws://stwebapp30.azurewebsites.net');
+  // var ws = new WebSocket('ws://localhost:3000');
 
   ws.onopen = function () {
     console.log('Successfully connect WebSocket');
