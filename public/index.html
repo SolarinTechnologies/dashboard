@@ -41,17 +41,9 @@
 					<div class="slide_div">
 						<input id="humidity_slider" type="range" orient="vertical" />
 					</div>
-					<p id="humidity_slider_output" >0</p>
+					<div class="humidity_slider_output" >0</div>
 				</div>
 			</div>
 		</div>
-		<script>
-			var slider = document.getElementById("temperature_slider");
-			var output = document.getElementById("temperature_slider_output");
-			output.innerHTML = slider.value;
-			slider.oninput = function() {
-			  output.innerHTML = this.value;
-			}
-		</script>
 	</body>
 </html>

@@ -128,4 +128,10 @@ $(document).ready(function () {
       console.error(err);
     }
   }
+	var slider = document.getElementById("temperature_slider");
+	var output = document.getElementById("temperature_slider_output");
+	output.innerHTML = slider.value;
+	slider.oninput = function() {
+	output.innerHTML = this.value;
+	}
 });
