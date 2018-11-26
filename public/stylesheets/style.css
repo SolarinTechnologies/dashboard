@@ -18,7 +18,7 @@ input[type=range][orient=vertical]
 
 .logo_region {/* float: left; */margin: 0;/* height: 50px; */}
 
-.text_region, .slider_output {/* float: left; *//* margin: 0 0 0 50px; */text-align: center;/* height: 50px; */font-weight: bold;color: #666666;padding: 10px 0 10px 10px;}
+.text_region {/* float: left; *//* margin: 0 0 0 50px; */text-align: center;/* height: 50px; */font-weight: bold;color: #666666;padding: 10px 0 10px 10px;}
 
 .data_region {/* float: left; */margin: 0 0 0 50px;/* height: 50px; */}
 
