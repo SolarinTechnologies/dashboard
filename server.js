@@ -1,9 +1,18 @@
+const iot_hub_connection_string = "HostName=STIotHub43.azure-devices.net;SharedAccessKeyName=STParticleSA05;SharedAccessKey=CT1zoY5NiK2mkv5n8jINy0UQgrQpJG96Yhkx6UxU4+c="; 
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 const moment = require('moment');
 const path = require('path');
 const iotHubClient = require('./IoThub/iot-hub.js');
+const Client = require('azure-iothub').Client;
+const client = Client.fromConnectionString(iot_hub_connection_string);
+const deviceId = 'MyNodeDevice';
+const methodParams = {
+  methodName: 'SetTelemetryInterval',
+  payload: 10, // Number of seconds.
+  responseTimeoutInSeconds: 30
+};
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -30,15 +39,25 @@ wss.on('connection', function connection(ws) {
   console.log('connection');
   ws.on('message', function incoming(message) {
     console.log('server received: %s', message);
-  });
-  ws.send('something from server');
-});
+    if(message.indexOf('toggle_state') != -1){
+      client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
+        if (err) {
+            console.error('Failed to invoke method \'' + methodParams.methodName + '\': ' + err.message);
+        } else {
+            console.log('Response from ' + methodParams.methodName + ' on ' + deviceId + ':');
+            console.log(JSON.stringify(result, null, 2));
+        }
+      });
+    } else {
 
-var iotHubReader = new iotHubClient("HostName=STIotHub43.azure-devices.net;SharedAccessKeyName=STParticleSA05;SharedAccessKey=CT1zoY5NiK2mkv5n8jINy0UQgrQpJG96Yhkx6UxU4+c=", "stconsumergroup17");
+    }
+  });
+  ws.send('message from server');
+});
+var iotHubReader = new iotHubClient(iot_hub_connection_string, "stconsumergroup17");
 iotHubReader.startReadMessage(function (obj, date) {
   try {
     console.log(date);
-    debugger;
     date = date || Date.now()
     wss.broadcast(JSON.stringify(Object.assign(obj, { time: moment.utc(date).format('YYYY:MM:DD[T]hh:mm:ss') })));
   } catch (err) {
