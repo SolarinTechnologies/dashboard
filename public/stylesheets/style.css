@@ -28,12 +28,12 @@ input[type=range][orient=vertical]
 
 .header_region {/* float: left; *//* border: solid thin lightgray; */margin: 0 0 20px 50px;height: fit-content;/* background-color: #252525; */}
 
-.chart_region {
+.data_box {
   margin: 0 20px 20px 0;
   padding: 0 10px 10px 0;
   width: 400px;
   background-color: #292929;
-  /* float: left; */
+  float: left;
 }
 
 .slider_region {
