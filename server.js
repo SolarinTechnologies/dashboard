@@ -29,9 +29,9 @@ wss.broadcast = function broadcast(data) {
 wss.on('connection', function connection(ws) {
   console.log('connection');
   ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
+    console.log('server received: %s', message);
   });
-  ws.send('something');
+  ws.send('something from server');
 });
 
 var iotHubReader = new iotHubClient("HostName=STIotHub43.azure-devices.net;SharedAccessKeyName=STParticleSA05;SharedAccessKey=CT1zoY5NiK2mkv5n8jINy0UQgrQpJG96Yhkx6UxU4+c=", "stconsumergroup17");

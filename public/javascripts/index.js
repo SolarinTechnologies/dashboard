@@ -83,8 +83,8 @@ $(document).ready(function () {
   ws.onopen = function () {
 	console.log('Successfully connect WebSocket');
 	$('#checkbox0').click(function(event){
-		console.log($(this).prop('checked') == true);
-		ws.send('checked!');
+		ws.send($(this).prop("checked") == true);
+		
 	});
   }
   function addData(chart, label, data) {
@@ -97,7 +97,7 @@ $(document).ready(function () {
     chart.update();
   }
   ws.onmessage = function (message) {
-    console.log('receive message' + message.data);
+    console.log('receive message: ' + message.data);
     try {
       var obj = JSON.parse(message.data);
       if(!obj.time) {
