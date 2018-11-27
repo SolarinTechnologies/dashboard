@@ -136,5 +136,6 @@ $(document).ready(function () {
 	}
 	$('#checkbox0').click(function(event){
 		console.log($(this).prop('checked') == true);
+		ws.send('checked!');
 	});
 });
