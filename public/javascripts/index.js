@@ -81,7 +81,11 @@ $(document).ready(function () {
   var ws = new WebSocket('ws://localhost:3000');
 
   ws.onopen = function () {
-    console.log('Successfully connect WebSocket');
+	console.log('Successfully connect WebSocket');
+	$('#checkbox0').click(function(event){
+		console.log($(this).prop('checked') == true);
+		ws.send('checked!');
+	});
   }
   function addData(chart, label, data) {
     chart.data.labels = [];
@@ -96,8 +100,6 @@ $(document).ready(function () {
     console.log('receive message' + message.data);
     try {
       var obj = JSON.parse(message.data);
-      // var data = JSON.parse(obj.data);
-      // if(!obj.time || !data.visible) {
       if(!obj.time) {
         return;
       }
@@ -134,8 +136,4 @@ $(document).ready(function () {
 	slider.oninput = function() {
 		output.innerHTML = this.value;
 	}
-	$('#checkbox0').click(function(event){
-		console.log($(this).prop('checked') == true);
-		ws.send('checked!');
-	});
 });
