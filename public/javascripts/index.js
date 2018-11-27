@@ -132,6 +132,9 @@ $(document).ready(function () {
 	var output = document.getElementById("temperature_slider_output");
 	output.innerHTML = slider.value;
 	slider.oninput = function() {
-	output.innerHTML = this.value;
+		output.innerHTML = this.value;
 	}
+	$('#checkbox0').click(function(event){
+		console.log($(this).prop('checked') == true);
+	});
 });
