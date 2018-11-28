@@ -37,9 +37,11 @@ wss.broadcast = function broadcast(data) {
 
 wss.on('connection', function connection(ws) {
   console.log('connection');
-  ws.on('message', function incoming(message) {
-    console.log('server received: %s', message);
-    if(message.indexOf('toggle_state') != -1){
+  ws.on('message', function incoming(message_string) {
+    console.log('server received: %s', message_string);
+    var message = JSON.parse(message_string);
+    if(message.toggle_state){
+      methodParams.payload = 3;
       client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
         if (err) {
             console.error('Failed to invoke method \'' + methodParams.methodName + '\': ' + err.message);
@@ -49,7 +51,15 @@ wss.on('connection', function connection(ws) {
         }
       });
     } else {
-
+      methodParams.payload = 10;
+      client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
+        if (err) {
+            console.error('Failed to invoke method \'' + methodParams.methodName + '\': ' + err.message);
+        } else {
+            console.log('Response from ' + methodParams.methodName + ' on ' + deviceId + ':');
+            console.log(JSON.stringify(result, null, 2));
+        }
+      });
     }
   });
   // ws.send('message from server');

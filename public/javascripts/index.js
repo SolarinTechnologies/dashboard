@@ -84,7 +84,10 @@ $(document).ready(function () {
 	console.log('Successfully connect WebSocket');
 	$('#checkbox0').click(function(event){
 		var toggle_state = $(this).prop("checked") == true;
-		ws.send('toggle_state: ' + toggle_state);
+		debugger;
+		var toggle_state_message = {};
+		toggle_state_message.toggle_state = toggle_state;
+		ws.send(JSON.stringify(toggle_state_message));
 	});
   }
   function addData(chart, label, data) {
