@@ -41,7 +41,7 @@ wss.on('connection', function connection(ws) {
     console.log('server received: %s', message_string);
     var message = JSON.parse(message_string);
     if(message.toggle_state){
-      methodParams.payload = 3;
+      methodParams.payload = 2;
       client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
         if (err) {
             console.error('Failed to invoke method \'' + methodParams.methodName + '\': ' + err.message);
@@ -62,8 +62,8 @@ wss.on('connection', function connection(ws) {
       });
     }
   });
-  // ws.send('message from server');
 });
+
 var iotHubReader = new iotHubClient(iot_hub_connection_string, "stconsumergroup17");
 iotHubReader.startReadMessage(function (obj, date) {
   try {
@@ -84,16 +84,11 @@ server.listen(port, function listening() {
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
-
   if (isNaN(port)) {
-    // named pipe
     return val;
   }
-
   if (port >= 0) {
-    // port number
     return port;
   }
-
   return false;
 }
