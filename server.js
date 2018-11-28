@@ -10,7 +10,7 @@ const client = Client.fromConnectionString(iot_hub_connection_string);
 const deviceId = 'MyNodeDevice';
 const methodParams = {
   methodName: 'SetTelemetryInterval',
-  payload: 10, // Number of seconds.
+  payload: 3, // seconds
   responseTimeoutInSeconds: 30
 };
 
@@ -52,7 +52,7 @@ wss.on('connection', function connection(ws) {
 
     }
   });
-  ws.send('message from server');
+  // ws.send('message from server');
 });
 var iotHubReader = new iotHubClient(iot_hub_connection_string, "stconsumergroup17");
 iotHubReader.startReadMessage(function (obj, date) {
