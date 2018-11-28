@@ -134,18 +134,21 @@ $(document).ready(function () {
   }
 	var carbon_slider_control = document.getElementById("carbon_slider");
 	var carbon_slider_output = document.getElementById("carbon_slider_output");
+	carbon_slider_control.value = Math.floor((Math.random() * 100));
 	carbon_slider_output.innerHTML = carbon_slider_control.value;
 	carbon_slider_control.oninput = function() {
 		carbon_slider_output.innerHTML = this.value;
 	}
 	var humidity_slider_control = document.getElementById("humidity_slider");
 	var humidity_slider_output = document.getElementById("humidity_slider_output");
+	humidity_slider_control.value = Math.floor((Math.random() * 100));
 	humidity_slider_output.innerHTML = humidity_slider_control.value;
 	humidity_slider_control.oninput = function() {
 		humidity_slider_output.innerHTML = this.value;
 	}
 	var temperature_slider_control = document.getElementById("temperature_slider");
 	var temperature_slider_output = document.getElementById("temperature_slider_output");
+	temperature_slider_control.value = Math.floor((Math.random() * 100));
 	temperature_slider_output.innerHTML = temperature_slider_control.value;
 	temperature_slider_control.oninput = function() {
 		temperature_slider_output.innerHTML = this.value;
