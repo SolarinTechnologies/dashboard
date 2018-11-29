@@ -41,7 +41,7 @@ wss.on('connection', function connection(ws) {
     console.log('server received: %s', message_string);
     var message = JSON.parse(message_string);
     if(message.toggle_state){
-      methodParams.payload = 2;
+      methodParams.payload = 1;
       client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
         if (err) {
             console.error('Failed to invoke method \'' + methodParams.methodName + '\': ' + err.message);
@@ -51,7 +51,7 @@ wss.on('connection', function connection(ws) {
         }
       });
     } else {
-      methodParams.payload = 10;
+      methodParams.payload = 3;
       client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
         if (err) {
             console.error('Failed to invoke method \'' + methodParams.methodName + '\': ' + err.message);
