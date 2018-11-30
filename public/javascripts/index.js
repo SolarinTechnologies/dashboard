@@ -106,7 +106,8 @@ $(document).ready(function () {
         return;
       }
       timeData.push(obj.time);
-      temperatureData.push(obj.visible);
+      var data = JSON.parse(obj.data)
+      temperatureData.push(data.visible);
       const maxLen = 50;
       var len = timeData.length;
       if (len > maxLen) {
