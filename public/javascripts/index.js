@@ -106,7 +106,7 @@ $(document).ready(function () {
         return;
       }
       timeData.push(obj.time);
-      var data = JSON.parse(obj.data)
+      var data = obj;
       temperatureData.push(data.visible);
       const maxLen = 50;
       var len = timeData.length;
