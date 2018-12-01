@@ -54,10 +54,11 @@ input[type=range][orient=vertical]
 
 .switch {
   position: relative;
-  display: inline-block;
   width: 60px;
   height: 34px;
   float: left;
+  margin: 0 170px;
+  padding: 0;
 }
 
 /* Hide default HTML checkbox */
@@ -78,7 +79,7 @@ input[type=range][orient=vertical]
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
-  /* display: inline-block; */
+  display: inline-block;
 }
 
 .slider:before {

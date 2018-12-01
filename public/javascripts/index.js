@@ -106,6 +106,7 @@ $(document).ready(function () {
         return;
       }
       var uv_alert_region = $('.uv_alert_region').text(obj.uv_alert)
+        uv_alert_region.css('text-align', 'center');
       if(obj.uv_alert){
         uv_alert_region.css('background-color', 'red');
       } else {
