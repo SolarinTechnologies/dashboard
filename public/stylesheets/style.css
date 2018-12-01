@@ -78,6 +78,7 @@ input[type=range][orient=vertical]
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+  /* display: inline-block; */
 }
 
 .slider:before {
