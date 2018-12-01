@@ -105,6 +105,12 @@ $(document).ready(function () {
       if(!obj.time) {
         return;
       }
+      var uv_alert_region = $('.uv_alert_region').text(obj.uv_alert)
+      if(obj.uv_alert){
+        uv_alert_region.css('background-color', 'red');
+      } else {
+        uv_alert_region.css('background-color', '#666666');
+      };
       timeData.push(obj.time);
       var data = obj;
       temperatureData.push(data.visible);
